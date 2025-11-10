@@ -68,3 +68,14 @@ export function deleteNotes(id) {
     notes.splice(index, 1);
     return true;
 }
+
+export function updatedNote(note) {
+    const editedNote = notes.find(n => n.id === note.id);
+    if (editedNote === undefined) {
+        return false;
+    }
+    editedNote.title = note.title;
+    editedNote.tag = note.tag;
+    editedNote.updatedAt = new Date().toDateString();
+    return editedNote;
+}
